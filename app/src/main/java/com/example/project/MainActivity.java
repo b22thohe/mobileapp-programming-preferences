@@ -3,6 +3,8 @@ package com.example.project;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +35,18 @@ public class MainActivity extends AppCompatActivity {
         //prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference string found!"));
         String str = myPreferenceRef.getString("MyAppPreferenceString", "No preference string found!");
         setMyPreferenceData(str);
+
+        // Add button object
+        Button myButton = findViewById(R.id.myButton);
+        // Add click listener to button
+        myButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Log.d("-->", "myButton in MainActivity was pressed!");
+
+            }
+        });
     }
 
     // Getter for myPreferenceData
