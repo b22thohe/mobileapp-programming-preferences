@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -30,11 +31,10 @@ public class MainActivity extends AppCompatActivity {
         myPreferenceEditor = myPreferenceRef.edit();
 
         // Read data from SharedPreference
-        //TextView prefTextRef = new TextView(this);
-        //prefTextRef = (TextView)findViewById(R.id.myTextView);
-        //prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference string found!"));
-        String str = myPreferenceRef.getString("MyAppPreferenceString", "No preference string found!");
-        setMyPreferenceData(str);
+        TextView prefTextRef = new TextView(this);
+        prefTextRef = (TextView)findViewById(R.id.myTextView);
+        prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference string found!"));
+
 
         // Add button object
         Button myButton = findViewById(R.id.myButton);
@@ -44,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("-->", "myButton in MainActivity was pressed!");
-
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
             }
         });
     }
