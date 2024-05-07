@@ -7,4 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".SecondActivity">
 
+    <EditText
+        android:id="@+id/settingsText"
+        android:layout_width="243dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="340dp"
+        android:ems="10"
+        android:inputType="text"
+        android:gravity="center"
+        android:text="put something here"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save and Close"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsText"
+        app:layout_constraintVertical_bias="0.204" />
 </androidx.constraintlayout.widget.ConstraintLayout>
