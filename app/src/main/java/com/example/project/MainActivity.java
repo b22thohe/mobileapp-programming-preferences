@@ -14,9 +14,6 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
     // Member variables
     private SharedPreferences myPreferenceRef;
-    private SharedPreferences.Editor myPreferenceEditor;
-
-    private String myPreferenceData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Create SharedPreference object
         myPreferenceRef = getSharedPreferences("mySharedPreferences", MODE_PRIVATE);
-        // Create SharedPreference Editor
-        myPreferenceEditor = myPreferenceRef.edit();
 
         // Read data from SharedPreference
         loadStringFromPreferences();
