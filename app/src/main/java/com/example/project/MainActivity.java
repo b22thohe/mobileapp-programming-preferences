@@ -26,14 +26,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Create SharedPreference object
-        myPreferenceRef = getPreferences(MODE_PRIVATE);
+        myPreferenceRef = getSharedPreferences("mySharedPreferences", MODE_PRIVATE);
         // Create SharedPreference Editor
         myPreferenceEditor = myPreferenceRef.edit();
 
         // Read data from SharedPreference
-        TextView prefTextRef = new TextView(this);
-        prefTextRef = (TextView)findViewById(R.id.myTextView);
-        prefTextRef.setText(myPreferenceRef.getString("MyAppPreferenceString", "No preference string found!"));
+        loadStringFromPreferences();
 
 
         // Add button object
@@ -50,14 +48,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Getter for myPreferenceData
-    public String getMyPreferenceData() {
-        return myPreferenceData;
+    @Override
+    protected void onResume() {
+        Log.d("-->", "Inside onResume!");
+        super.onResume();
+        loadStringFromPreferences();
     }
 
-    // Setter for myPreferenceData
-    public void setMyPreferenceData(String str) {
-        myPreferenceData = str;
-        Log.d("--> myPreferenceData: ", str);
+    // Method to load string from shared preferences and display in textview
+    private void loadStringFromPreferences() {
+        String preferenceString = myPreferenceRef.getString("MyPreferenceString", "No preference string found!");
+
+        Log.d("MainActivity", "Loaded value: " + preferenceString);
+
+        // Read data from SharedPreference
+        TextView prefTextRef = (TextView)findViewById(R.id.myTextView);
+        prefTextRef.setText(myPreferenceRef.getString("MyPreferenceString", "No preference string found!"));
     }
 }
