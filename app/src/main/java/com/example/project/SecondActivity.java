@@ -40,18 +40,6 @@ public class SecondActivity extends AppCompatActivity {
         myPreferenceRef = getSharedPreferences("mySharedPreferences", MODE_PRIVATE);
         // Create SharedPreference Editor
         myPreferenceEditor = myPreferenceRef.edit();
-
-        // Add button object
-        Button saveButton = findViewById(R.id.saveButton);
-        // Add click listener to button
-        saveButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Log.d("-->", "myButton in MainActivity was pressed!");
-                savePref(v);
-            }
-        });
     }
 
     // Method to save text to shared preferences
