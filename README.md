@@ -1,42 +1,85 @@
 
-# Rapport
+# Report
 
-**Skriv din rapport här!**
+Created a SharedPreference object and editor.
+Did commit and push to Github.
 
-_Du kan ta bort all text som finns sedan tidigare_.
+Updated textview with a new id.
+Did commit and push to Github.
 
-## Följande grundsyn gäller dugga-svar:
+Added read from shared preferences to String
+Added getters/setters for member variable myPreferenceData
+Did commit and push to Github.
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
+Adjusted position of textview and added a button to the layout file.
+Did commit and push to Github.
 
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+Added a button object and attached a click listener.
+Did commit and push to Github.
 
+Removed getter and setter for myPreferenceData as they were never implemented.
+Moved the code for reading shared preference data into method loadStringFromPreferences().
+Added overridden onResume() method with code to load preference data when resuming MainActivity.
+Did commit and push to Github.
+
+Created SharedPreference object and added call to savePref() in button listener.
+Added savePref() method to save data to shared preferences and then end activity.
+Did commit and push to Github.
+
+** Code example 1 - savePref() method **
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+public void savePref(View v) {
+        // Get the text from EditText
+        EditText newPrefText = (EditText)findViewById(R.id.settingsText);
+
+        // Store the new preference text
+        myPreferenceEditor.putString("MyPreferenceString", newPrefText.getText().toString());
+        myPreferenceEditor.apply();
+
+        Log.d("-->SecondActivity", "Saved value: " + newPrefText.getText().toString());
+
+        // Start the MainActivity again
+        Intent intent = new Intent(SecondActivity.this,MainActivity.class);
+        startActivity(intent);
+
+        // Clear the EditText
+        newPrefText.setText("");
+
+        // Finish the SecondActivity
+        finish();
     }
-}
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
+Added "android:onClick='savePref'" to load method directly on button press.
+Did commit and push to Github.
 
-![](android.png)
+Removed the now redundant click listener from button.
+Did commit and push to Github.
 
-Läs gärna:
+Did some cleanup of the code to remove unused references and other unnecessary things.
+Did commit and push to Github.
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+Changed some hardcoded values to references to strings.xml instead.
+Did commit and push to Github.
+
+Changed the size of TextView and centered the text within.
+Did commit and push to Github.
+
+Moved hardcoded button text to strings.xml.
+Did commit and push to Github.
+
+Tested the app in the emulator to see that it worked according to requirements.
+The result can be seen in the screenshots below.
+
+** SCREENSHOT 1 - MainActivity at startup **
+![Screenshot 1](MainActivity-startup.png)
+
+** SCREENSHOT 2 - SecondActivity after writing a value in EditText **
+![Screenshot 2](SecondActivity-written-value.png)
+
+** SCREENSHOT 3 - MainActivity after closing SecondActivity and fetched the value from shared preferences **
+![Screenshot 3](MainActivity-resumed.png)
+
+Added images to report and did commit and push.
+
+Did commit and push to upload this report.
