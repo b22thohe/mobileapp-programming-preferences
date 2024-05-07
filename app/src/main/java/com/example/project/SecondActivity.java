@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 //import androidx.activity.EdgeToEdge;
@@ -18,7 +17,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SecondActivity extends AppCompatActivity {
 
-    private SharedPreferences myPreferenceRef;
     private SharedPreferences.Editor myPreferenceEditor;
 
     @Override
@@ -37,7 +35,7 @@ public class SecondActivity extends AppCompatActivity {
         });
 
         // Create SharedPreference object
-        myPreferenceRef = getSharedPreferences("mySharedPreferences", MODE_PRIVATE);
+        SharedPreferences myPreferenceRef = getSharedPreferences("mySharedPreferences", MODE_PRIVATE);
         // Create SharedPreference Editor
         myPreferenceEditor = myPreferenceRef.edit();
     }
